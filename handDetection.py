@@ -8,7 +8,8 @@ mp_hands = mp.solutions.hands
 # For webcam input:
 hands = mp_hands.Hands(
     max_num_hands=1, min_detection_confidence=0.7, min_tracking_confidence=0.5,)
-cap = cv2.VideoCapture(1)
+device = 1
+cap = cv2.VideoCapture(device)
 cap.set(3, 1920)
 cap.set(4, 1080)
 
@@ -21,8 +22,7 @@ while cap.isOpened():
   if not success:
     break
 
-  # Flip the image horizontally for a later selfie-view display, and convert
-  # the BGR image to RGB.
+
   image = cv2.cvtColor(cv2.flip(image, -1), cv2.COLOR_BGR2RGB)
   # To improve performance, optionally mark the image as not writeable to
   # pass by reference.
